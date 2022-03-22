@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/TavianJD/watch-list/issues"
   },
-  "homepage": "https://github.com/TavianJD/watch-list#readme"
+  "homepage": "https://github.com/TavianJD/watch-list#readme",
+  "dependencies": {
+    "whatwg-url": "^11.0.0"
+  }
 }
