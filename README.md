@@ -2,7 +2,7 @@
 
 
 ## Description
-Our Application allows the User to search for their favorite movies and add and delete them from your own Personal Profile List 
+Our Application allows the User to search for their favorite movies then add and delete them from your own Personal Profile List.
 
 ## Table of Contents
 - [Link](#link)
