@@ -24,4 +24,3 @@ Christopher Speltz
 Abdinasir Hassan
 Tavian Dawson
 
-## Screenshots
