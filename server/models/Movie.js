@@ -20,6 +20,9 @@ const movieSchema = new Schema({
     type: String,
     required: true,
   },
+  homepage: {
+    type: String
+  }
 });
 
 module.exports = movieSchema;

@@ -9,10 +9,12 @@ import {
 } from "react-bootstrap";
 
 import Auth from "../utils/auth";
-import { searchMovies } from "../utils/API";
+import { searchMovies, searchHomePage } from "../utils/API";
 import { saveMovieIds, getSavedMovieIds } from "../utils/localStorage";
 import { SAVE_MOVIE } from "../utils/mutations";
 import { useMutation } from "@apollo/react-hooks";
+
+
 
 const SearchMovies = () => {
   // create state for holding returned movie api data
@@ -52,13 +54,17 @@ const SearchMovies = () => {
 
       const { results } = await response.json();
 
+      console.log(results)
+
       const movieData = results.map((movie) => ({
         movieId: movie.id,
         overview: movie.overview,
         title: movie.title,
         release_date: movie.release_date,
         poster_path: "https://image.tmdb.org/t/p/original/" + movie.poster_path || "",
+        homepage: getHomePage(movie.id)
       }));
+    
 
       setSearchedMovies(movieData);
       setSearchInput("");
@@ -66,6 +72,23 @@ const SearchMovies = () => {
       console.error(err);
     }
   };
+
+  const getHomePage =async (movieId) => {
+    try {
+      const response = await searchHomePage(movieId);
+
+      if (!response.ok) {
+        throw new Error("something went wrong!");
+      }
+
+      const { results } = await response.json();
+      return results;
+    
+  } catch (err) {
+    console.error(err);
+  }
+
+  }
 
   // create function to handle saving a movie to our database
   const handleSaveMovie = async (movieId) => {
@@ -153,7 +176,14 @@ const SearchMovies = () => {
                         ? "This movie has already been added to the list!"
                         : "Save this Movie!"}
                     </Button>
+
                   )}
+                  <a href={movie.homepage}>
+                  <Button className=" mt-2 btn-block btn-info">
+                    Watch Trailer
+                  </Button>
+                  </a>
+                  
                 </Card.Body>
               </Card>
             );

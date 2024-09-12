@@ -7,6 +7,7 @@ const typeDefs = gql`
     poster_path: String
     release_date: String
     title: String!
+    homepage: String
   }
   type User {
     _id: ID
@@ -25,6 +26,7 @@ const typeDefs = gql`
     poster_path: String
     release_date: String
     title: String
+    homepage: String
   }
   type Query {
     me: User
